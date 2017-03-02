@@ -1,6 +1,6 @@
 {
   "name": "pg-git",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "PostgreSQL simple dump/diff tool",
   "main": "index.js",
   "bin": {
@@ -16,7 +16,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Maxim Savin <soulman.is.good@gmail.com>",
-  "license": "ISC",
+  "license": "GPL-3.0",
   "keywords": [
     "pg",
     "postgres",
@@ -31,5 +31,13 @@
   ],
   "devDependencies": {
     "eslint": "^3.16.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soulman-is-good/pg-git.git"
+  },
+  "bugs": {
+    "url": "https://github.com/soulman-is-good/pg-git/issues"
+  },
+  "homepage": "https://github.com/soulman-is-good/pg-git#readme"
 }
