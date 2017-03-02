@@ -1,0 +1,35 @@
+{
+  "name": "pg-git",
+  "version": "0.1.0",
+  "description": "PostgreSQL simple dump/diff tool",
+  "main": "index.js",
+  "bin": {
+    "pg-git": "./lib/app.js"
+  },
+  "engineStrict": true,
+  "engines": {
+    "node": ">=4.8.0"
+  },
+  "scripts": {
+    "lint": "eslint lib/**.js",
+    "lint-fix": "eslint --fix lib/**.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Maxim Savin <soulman.is.good@gmail.com>",
+  "license": "ISC",
+  "keywords": [
+    "pg",
+    "postgres",
+    "posgresql",
+    "psql",
+    "apgdiff",
+    "pgit",
+    "pggit",
+    "dump",
+    "diff",
+    "migration"
+  ],
+  "devDependencies": {
+    "eslint": "^3.16.1"
+  }
+}
