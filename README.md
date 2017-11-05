@@ -1,5 +1,7 @@
 ### PostgreSQL simple code dumping tool with diff migration
 
+![travis](https://travis-ci.org/soulman-is-good/pg-git.svg?branch=master)
+
 **Best used with git**
 
 This tool was written to help migrate between different servers and to help with distributed development on PostgreSQL.
