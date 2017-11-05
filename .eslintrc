@@ -4,6 +4,8 @@
         "sourceType": "script"
     },
     "rules": {
-        "semi": 2
+        "semi": 2,
+        "newline-after-var": "error",
+        "newline-before-return": "error"
     }
 }
