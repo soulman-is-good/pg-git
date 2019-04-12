@@ -1,6 +1,6 @@
 {
   "name": "pg-git",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "PostgreSQL simple dump/diff tool",
   "main": "index.js",
   "bin": {
@@ -41,6 +41,11 @@
   },
   "homepage": "https://github.com/soulman-is-good/pg-git#readme",
   "dependencies": {
-    "dotenv": "^4.0.0"
+    "cli-progress": "^2.1.1",
+    "dotenv": "^4.0.0",
+    "extract-zip": "^1.6.7",
+    "hasbin": "^1.2.3",
+    "targz": "^1.0.1",
+    "wget-improved": "^3.0.2"
   }
 }
