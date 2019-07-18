@@ -10,7 +10,7 @@ Else tool will try to use system default `pg_dump` and `psql` files.
 
 WARNING: This tool uses and bundles:
 
-- [arpdiff](https://github.com/fordfrog/apgdiff) v2.6 jar file (requires Java VM)
+- [apgdiff](https://github.com/fordfrog/apgdiff) v2.6 jar file (requires Java VM)
 
 **node >=4.8.0**
 
