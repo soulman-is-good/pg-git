@@ -1,6 +1,6 @@
 {
   "name": "pg-git",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "PostgreSQL simple dump/diff tool",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
