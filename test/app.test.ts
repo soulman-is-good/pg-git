@@ -14,7 +14,7 @@ describe('Main export', function test() {
     noDownload: true,
   };
 
-  this.timeout(5000);
+  this.timeout(60000);
 
   before(async () => {
     container = await runPostgres(options);
