@@ -1,11 +1,35 @@
 {
+    "extends": [
+      "plugin:@typescript-eslint/recommended",
+      "prettier"
+    ],
+    "env": {
+      "node": true,
+      "mocha": true,
+      "es6": true
+    },
+    "settings": {
+      "import/resolver": {
+        "node": {
+          "extensions": [".js", ".ts"]
+        }
+      }
+    },
+    "plugins": [
+      "@typescript-eslint",
+      "prettier"
+    ],
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
-        "ecmaVersion": 6,
-        "sourceType": "script"
+      "ecmaVersion": 2018,
+      "sourceType": "module"
     },
     "rules": {
-        "semi": 2,
-        "newline-after-var": "error",
-        "newline-before-return": "error"
+      "import/prefer-default-export": "off",
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "@typescript-eslint/no-use-before-define": "off",
+      "no-await-in-loop": "off",
+      "prettier/prettier": ["warn"]
     }
-}
+  }
+  

@@ -1,2 +1,12 @@
+.env
 node_modules
-npm-debug.log
+.idea
+.vscode
+*.iml
+modules.xml
+*.ipr
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+Thumbs.db
+*.log
