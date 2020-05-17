@@ -1,8 +1,8 @@
 ### PostgreSQL simple code dumping tool with diff migration
 
-![travis](https://travis-ci.org/soulman-is-good/pg-git.svg?branch=master)
+![travis](https://travis-ci.org/soulman-is-good/pg-git.svg?branch=master) ![npm](https://img.shields.io/npm/v/pg-git?style=plastic)
 
-**Best used with git**
+**Best used with git** :octocat:
 
 This tool was written to help migrate between different servers and to help with distributed development on PostgreSQL.
 Tool will automatically download latest Postgres binaries for the platform unless `NO_DOWNLOAD` env or `--no_download` flag is specified.
@@ -12,28 +12,32 @@ WARNING: This tool uses and bundles:
 
 - [apgdiff](https://github.com/fordfrog/apgdiff) v2.6 jar file (requires Java VM)
 
-**node >=4.8.0**
+**node >=11.0.0**
 
 If you want to override this to yours binaries, e.g. system defaulted, then use envirnoment variables or cli params described below.
 
 #### Usage
 
 Commonly tool was develop as standalone and to install as dependency to use with npm. But you can also `require`
-it with in you project, not much use of it that way though.
+it within you project, not much use of it that way though.
 
 ```js
-const pgit = require('pg-git');
+const { dump, diff, apply, StringStream } = require('pg-git');
 
-// For now database parameters are only supported via environment variables
+const options = {
+  user: 'postgres',
+  password: 'postgres',
+  database: 'postgres',
+  host: 'localhost',
+  port: 5432,
+  noDownload: true,
+};
+const newDump = StringStream('CREATE TABLE public.test(id integer);');
 
-// dump current database
-pgit.commit(DUMP_FILE)
-  .then(ok => console.log('OKEY!')
-  .catch(console.error);
-
-// migrate dump to current db
-pgit.migrate(DUMP_FILE)
-  .then(ok => console.log('Migration completed!')
+// dump current database, make a diff and apply
+dump(options)
+  .then(dumpStream => diff(options, dumpStream, newDump))
+  .then(diffStream => apply(options, diffStream))
   .catch(console.error);
 ```
 
