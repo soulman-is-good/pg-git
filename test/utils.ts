@@ -12,7 +12,7 @@ export const runPostgres = (options: Partial<PGOptions>): Promise<Container> => 
 
   return (docker.createContainer(
     {
-      Image: 'postgres:11',
+      Image: 'postgres:10',
       name: 'pggittest',
       AttachStdin: true,
       AttachStdout: true,
