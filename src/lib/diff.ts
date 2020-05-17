@@ -37,10 +37,14 @@ export default (pgOptions: PGOptions, oldSqlStream: Stream, newSqlStream: Stream
         resolve(outDiff);
 
         function onClose() {
+          fs.unlinkSync(oldFile);
+          fs.unlinkSync(newFile);
           fs.rmdirSync(tmpFolder, { recursive: true });
         }
 
         function onError(chunk: Error | Buffer) {
+          fs.unlinkSync(oldFile);
+          fs.unlinkSync(newFile);
           fs.rmdirSync(tmpFolder, { recursive: true });
           outDiff.emit('error', chunk instanceof Error ? chunk.message : chunk);
           outDiff.end();
