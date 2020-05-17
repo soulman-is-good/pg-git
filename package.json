@@ -30,7 +30,7 @@
     "migration"
   ],
   "devDependencies": {
-    "eslint": "^3.16.1"
+    "eslint": "^4.18.2"
   },
   "repository": {
     "type": "git",
