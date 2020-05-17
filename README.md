@@ -32,7 +32,7 @@ const options = {
   port: 5432,
   noDownload: true,
 };
-const newDump = StringStream('CREATE TABLE public.test(id integer);');
+const newDump = new StringStream('CREATE TABLE public.test(id integer);');
 
 // dump current database, make a diff and apply
 dump(options)
