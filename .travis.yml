@@ -3,5 +3,6 @@ node_js:
   - "11"
 services:
   - docker
+  - postgresql
 before_install:
-  - docker pull postgres:11
+  - docker pull postgres:10
