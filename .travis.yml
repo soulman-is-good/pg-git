@@ -4,5 +4,10 @@ node_js:
 services:
   - docker
   - postgresql
+addons:
+  postgresql: "10"
+  apt:
+    packages:
+    - postgresql-client-10
 before_install:
   - docker pull postgres:10
