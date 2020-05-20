@@ -29,10 +29,11 @@ export default (pgOptions: PGOptions): Promise<Duplex> => {
         pgDump.stderr.on('data', onError);
         pgDump.stdout.pipe(ws);
 
+        // TODO: optionized instant return
+        // else wait on close and reject on error (no need to handle ws.onError)
         resolve(ws);
 
         function onError(chunk: Error | Buffer) {
-          console.log(chunk instanceof Error ? null : chunk.toString());
           ws.emit('error', chunk instanceof Error ? chunk.message : chunk);
           ws.end();
         }
