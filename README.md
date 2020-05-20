@@ -1,6 +1,6 @@
 ### PostgreSQL simple code dumping tool with diff migration
 
-![travis](https://travis-ci.org/soulman-is-good/pg-git.svg?branch=master) ![npm](https://img.shields.io/npm/v/pg-git?style=plastic)
+![travis](https://travis-ci.org/soulman-is-good/pg-git.svg?branch=master) ![npm](https://img.shields.io/npm/v/pg-git?style=plastic) ![types](https://img.shields.io/npm/types/pg-git?style=plastic)
 
 **Best used with git** :octocat:
 
