@@ -9,7 +9,7 @@ const pgDump_1 = __importDefault(require("./pgDump"));
 exports.default = (pgOptions, newSql, justPrintDiff) => {
     return pgDump_1.default(pgOptions)
         .then(oldDump => {
-        return diff_1.default(pgOptions, oldDump, newSql);
+        return diff_1.default(oldDump, newSql);
     })
         .then(diffStr => new Promise((resolve, reject) => {
         if (justPrintDiff) {

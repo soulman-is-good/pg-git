@@ -10,7 +10,7 @@ const log4js_1 = __importDefault(require("log4js"));
 const Pipe_1 = require("./Pipe");
 const log = log4js_1.default.getLogger('pggit');
 const waitForClose = (stream) => new Promise(resolve => stream.on('close', resolve));
-exports.default = (pgOptions, oldSqlStream, newSqlStream) => {
+exports.default = (oldSqlStream, newSqlStream) => {
     const java = process.env.JAVA_HOME ? path_1.default.join(process.env.JAVA_HOME, 'bin', 'java') : 'java';
     const jar = path_1.default.join(__dirname, '..', '..', 'bin', 'apgdiff.jar');
     const tmpFolder = fs_1.default.mkdtempSync('pg-git');

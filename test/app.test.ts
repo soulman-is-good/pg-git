@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 import { apply, dump, diff, PGOptions } from '../src/index';
-import { runPostgres, Container } from './utils';
 import { StringStream } from '../src/lib/StringStream';
+import { runPostgres, getAvailablePort, Container } from './utils';
 
 describe('Main export', function test() {
   let container!: Container;
@@ -10,13 +10,16 @@ describe('Main export', function test() {
     user: 'master',
     password: '1234qwert=',
     database: 'test',
-    port: 5433,
+    port: 0,
     noDownload: true,
   };
 
   this.timeout(60000);
 
   before(async () => {
+    const port = await getAvailablePort();
+
+    options.port = port;
     container = await runPostgres(options);
 
     // Wait container start
@@ -65,7 +68,7 @@ describe('Main export', function test() {
       .then(oldStr => {
         const newStr = new StringStream('CREATE TABLE test(id INT, title TEXT);');
 
-        return diff(options, oldStr, newStr);
+        return diff(oldStr, newStr);
       })
       .then(result => {
         const diffResult: string[] = [];

@@ -7,7 +7,7 @@ import { PGOptions } from './pgOptions';
 export default (pgOptions: PGOptions, newSql: Stream, justPrintDiff: boolean) => {
   return pgDump(pgOptions)
     .then(oldDump => {
-      return diff(pgOptions, oldDump, newSql);
+      return diff(oldDump, newSql);
     })
     .then(
       diffStr =>

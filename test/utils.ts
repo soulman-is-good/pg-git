@@ -1,3 +1,4 @@
+import net from 'net';
 import Docker from 'dockerode';
 import { PGOptions } from '../src/lib/pgOptions';
 
@@ -6,6 +7,18 @@ export interface Container {
   kill(opts?: {}, callback?: Function): Promise<unknown>;
   logs(opts?: {}): Promise<unknown>;
 }
+
+export const getAvailablePort = (): Promise<number> =>
+  new Promise((resolve, reject) => {
+    const server = net.createServer();
+
+    server.on('error', reject);
+    server.listen(() => {
+      const { port } = server.address() as net.AddressInfo;
+
+      server.close((err?: Error) => (err ? reject(err) : resolve(port)));
+    });
+  });
 
 export const runPostgres = (options: Partial<PGOptions>): Promise<Container> => {
   const docker = new Docker();

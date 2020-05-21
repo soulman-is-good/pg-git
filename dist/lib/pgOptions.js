@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.pgOptions = void 0;
-exports.pgOptions = {
+exports.getPGOptions = void 0;
+exports.getPGOptions = (options) => Object.assign({
     user: process.env.PGUSER || 'postgres',
     password: process.env.PGPASSWORD || 'postgres',
     database: process.env.PGDATABASE || 'postgres',
@@ -19,5 +19,5 @@ exports.pgOptions = {
     noDownload: !!process.env.NO_DOWNLOAD || false,
     pgDumpPath: process.env.PG_DUMP_PATH,
     psqlPath: process.env.PSQL_PATH,
-};
+}, options);
 //# sourceMappingURL=pgOptions.js.map

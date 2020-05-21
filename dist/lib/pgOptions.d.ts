@@ -9,4 +9,4 @@ export interface PGOptions {
     pgDumpPath?: string;
     psqlPath?: string;
 }
-export declare const pgOptions: PGOptions;
+export declare const getPGOptions: (options?: Partial<PGOptions>) => PGOptions;

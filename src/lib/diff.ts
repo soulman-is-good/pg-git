@@ -4,12 +4,11 @@ import { spawn } from 'child_process';
 import { Stream } from 'stream';
 import log4js from 'log4js';
 import { Pipe } from './Pipe';
-import { PGOptions } from './pgOptions';
 
 const log = log4js.getLogger('pggit');
 const waitForClose = (stream: Stream) => new Promise(resolve => stream.on('close', resolve));
 
-export default (pgOptions: PGOptions, oldSqlStream: Stream, newSqlStream: Stream): Promise<Stream> => {
+export default (oldSqlStream: Stream, newSqlStream: Stream): Promise<Stream> => {
   const java = process.env.JAVA_HOME ? path.join(process.env.JAVA_HOME, 'bin', 'java') : 'java';
   const jar = path.join(__dirname, '..', '..', 'bin', 'apgdiff.jar');
   const tmpFolder = fs.mkdtempSync('pg-git');

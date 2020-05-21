@@ -1,7 +1,5 @@
-import { version } from '../../package.json';
-
 export default () => {
-  console.log(`PgGit version ${version}
+  console.log(`
 Usage: pg-git [options] <command>
 
 Commands:

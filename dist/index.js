@@ -15,10 +15,10 @@ const StringStream_1 = require("./lib/StringStream");
 Object.defineProperty(exports, "StringStream", { enumerable: true, get: function () { return StringStream_1.StringStream; } });
 const pgOptions_1 = require("./lib/pgOptions");
 setupLog4js_1.default();
-exports.dump = (options) => pgDump_1.default(Object.assign(pgOptions_1.pgOptions, options));
-exports.diff = (options, src, dest) => diff_1.default(Object.assign(pgOptions_1.pgOptions, options), src, dest);
+exports.dump = (options) => pgDump_1.default(pgOptions_1.getPGOptions(options));
+exports.diff = (src, dest) => diff_1.default(src, dest);
 exports.apply = (options, stringOrStream, returnResult = false) => {
     const stream = stringOrStream instanceof stream_1.Stream ? stringOrStream : new StringStream_1.StringStream(`${stringOrStream}\n`);
-    return psql_1.default(Object.assign(pgOptions_1.pgOptions, options), transation => transation.pipeFrom(stream), returnResult);
+    return psql_1.default(pgOptions_1.getPGOptions(options), transation => transation.pipeFrom(stream), returnResult);
 };
 //# sourceMappingURL=index.js.map

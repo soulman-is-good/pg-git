@@ -11,8 +11,7 @@ setupLog4js();
 
 export const dump = (options: Partial<PGOptions>) => pgDump(getPGOptions(options));
 
-export const diff = (options: Partial<PGOptions>, src: Stream, dest: Stream) =>
-  pgDiff(getPGOptions(options), src, dest);
+export const diff = (src: Stream, dest: Stream) => pgDiff(src, dest);
 
 export const apply = (
   options: Partial<PGOptions>,
