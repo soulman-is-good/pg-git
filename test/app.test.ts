@@ -43,9 +43,18 @@ describe('Main export', function test() {
   });
 
   it('should execute apply', done => {
-    apply(options, 'CREATE TABLE test (id INT);', true)
+    apply(options, 'CREATE TABLE test (id integer);', true)
       .then(result => {
         assert.include(result, 'CREATE TABLE');
+        done();
+      })
+      .catch(done);
+  });
+
+  it('should return undefined on empty apply', done => {
+    apply(options, '', true)
+      .then(result => {
+        assert.isUndefined(result);
         done();
       })
       .catch(done);
