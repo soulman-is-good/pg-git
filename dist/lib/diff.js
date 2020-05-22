@@ -30,14 +30,14 @@ exports.default = (oldSqlStream, newSqlStream) => {
         apgdiff.stdout.pipe(outDiff);
         resolve(outDiff);
         function onClose() {
-            fs_1.default.unlinkSync(oldFile);
-            fs_1.default.unlinkSync(newFile);
-            fs_1.default.rmdirSync(tmpFolder, { recursive: true });
+            if (fs_1.default.existsSync(tmpFolder)) {
+                fs_1.default.unlinkSync(oldFile);
+                fs_1.default.unlinkSync(newFile);
+                fs_1.default.rmdirSync(tmpFolder, { recursive: true });
+            }
         }
         function onError(chunk) {
-            fs_1.default.unlinkSync(oldFile);
-            fs_1.default.unlinkSync(newFile);
-            fs_1.default.rmdirSync(tmpFolder, { recursive: true });
+            onClose();
             outDiff.emit('error', chunk instanceof Error ? chunk.message : chunk);
             outDiff.end();
         }

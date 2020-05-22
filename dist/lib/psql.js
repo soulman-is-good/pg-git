@@ -34,11 +34,11 @@ exports.default = (pgOptions, callback, returnResult = false) => {
         function onData(chunk) {
             const msg = chunk.toString();
             log.debug(msg);
-            if (returnResult) {
+            if (returnResult && !/BEGIN|COMMIT/.test(msg)) {
                 result += msg;
             }
             if (msg.indexOf('COMMIT') > -1) {
-                resolve(returnResult ? result : undefined);
+                resolve(returnResult && result ? result : undefined);
                 psql.kill();
             }
         }

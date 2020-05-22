@@ -40,7 +40,9 @@ const extractArchive = (archiveName) => new Promise((resolve, reject) => {
         }, err => (err ? reject(err) : resolve()));
     }
     else {
-        extract_zip_1.default(fullPath, { dir: projectFolder }, err => (err ? reject(err) : resolve()));
+        extract_zip_1.default(fullPath, { dir: projectFolder })
+            .then(resolve)
+            .catch(reject);
     }
 });
 const moveFile = (from, to) => new Promise((resolve, reject) => fs_1.default.rename(from, to, err => (err ? reject(err) : resolve())));

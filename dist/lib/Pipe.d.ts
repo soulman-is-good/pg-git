@@ -1,5 +1,8 @@
 /// <reference types="node" />
-import { Transform } from 'stream';
+import { Transform, TransformCallback, TransformOptions } from 'stream';
+declare type PipeOptions = Omit<TransformOptions, 'read' | 'write' | 'writev' | 'final' | 'destroy' | 'flush' | 'transform'>;
 export declare class Pipe extends Transform {
-    _transform(chunk: Buffer, enc: string, callback: Function): void;
+    constructor(opts?: PipeOptions);
+    _transform(chunk: Buffer | string, enc: string, callback: TransformCallback): void;
 }
+export {};
