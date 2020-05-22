@@ -34,18 +34,17 @@
   "dependencies": {
     "cli-progress": "^2.1.1",
     "dotenv": "^8.2.0",
-    "extract-zip": "^1.6.7",
+    "extract-zip": "^2.0.0",
     "hasbin": "^1.2.3",
     "log4js": "^4.4.0",
     "targz": "^1.0.1",
-    "wget-improved": "^3.0.2"
+    "wget-improved": "^3.2.0"
   },
   "devDependencies": {
     "@types/chai": "^4.2.3",
     "@types/cli-progress": "^3.7.0",
     "@types/dotenv": "^8.2.0",
     "@types/eslint": "^6.1.2",
-    "@types/extract-zip": "^1.6.2",
     "@types/mocha": "^5.2.7",
     "@types/node": "^12.7.11",
     "@types/targz": "^1.0.0",

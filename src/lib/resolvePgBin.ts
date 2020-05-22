@@ -47,7 +47,9 @@ const extractArchive = (archiveName: string) =>
         err => (err ? reject(err) : resolve()),
       );
     } else {
-      extractZip(fullPath, { dir: projectFolder }, err => (err ? reject(err) : resolve()));
+      extractZip(fullPath, { dir: projectFolder })
+        .then(resolve)
+        .catch(reject);
     }
   });
 
