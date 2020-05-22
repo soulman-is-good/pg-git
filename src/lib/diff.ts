@@ -36,15 +36,15 @@ export default (oldSqlStream: Stream, newSqlStream: Stream): Promise<Stream> => 
         resolve(outDiff);
 
         function onClose() {
-          fs.unlinkSync(oldFile);
-          fs.unlinkSync(newFile);
-          fs.rmdirSync(tmpFolder, { recursive: true });
+          if (fs.existsSync(tmpFolder)) {
+            fs.unlinkSync(oldFile);
+            fs.unlinkSync(newFile);
+            fs.rmdirSync(tmpFolder, { recursive: true });
+          }
         }
 
         function onError(chunk: Error | Buffer) {
-          fs.unlinkSync(oldFile);
-          fs.unlinkSync(newFile);
-          fs.rmdirSync(tmpFolder, { recursive: true });
+          onClose();
           outDiff.emit('error', chunk instanceof Error ? chunk.message : chunk);
           outDiff.end();
         }

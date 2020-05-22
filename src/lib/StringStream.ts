@@ -1,10 +1,12 @@
 import { Duplex, DuplexOptions } from 'stream';
 
+type StringStreamOptions = Omit<DuplexOptions, 'read' | 'write' | 'writev' | 'final' | 'destroy'>;
+
 export class StringStream extends Duplex {
   private _string: string;
   private _lastReadBype: number;
 
-  constructor(str?: string, opts?: DuplexOptions) {
+  constructor(str?: string, opts?: StringStreamOptions) {
     super(opts);
     this._string = str || '';
     this._lastReadBype = 0;

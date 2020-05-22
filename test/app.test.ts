@@ -66,8 +66,8 @@ describe('Main export', function test() {
         str.on('error', data => done(new Error(data.toString())));
         str.once('data', data => {
           assert.include(data.toString(), 'CREATE TABLE public.test');
-          done();
         });
+        str.on('end', () => done());
       })
       .catch(done);
   });
