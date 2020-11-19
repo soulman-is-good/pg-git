@@ -26,6 +26,7 @@ exports.default = (pgOptions, callback, returnResult = false) => {
         psql.on('error', onError);
         psql.stderr.once('data', onError);
         psql.stdout.on('data', onData);
+        transaction.on('error', onError);
         callback(transaction);
         function onError(chunk) {
             reject(new Error(chunk instanceof Error ? chunk.message : chunk.toString()));
@@ -49,6 +50,10 @@ class Transaction extends stream_1.Writable {
         super();
         this.stdin = stdin;
         this.started = false;
+        this.stdin.on('error', err => {
+            this.started = false;
+            this.emit('error', err);
+        });
     }
     begin() {
         if (!this.started) {

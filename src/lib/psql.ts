@@ -1,4 +1,4 @@
-import { Writable, Stream } from 'stream';
+import { Writable, Readable, Duplex, Stream } from 'stream';
 import { spawn } from 'child_process';
 import log4js from 'log4js';
 import { PGOptions } from './pgOptions';
@@ -34,6 +34,7 @@ export default (
         psql.on('error', onError);
         psql.stderr.once('data', onError);
         psql.stdout.on('data', onData);
+        transaction.on('error', onError);
 
         callback(transaction);
 
@@ -66,6 +67,10 @@ class Transaction extends Writable {
     super();
     this.stdin = stdin;
     this.started = false;
+    this.stdin.on('error', err => {
+      this.started = false;
+      this.emit('error', err);
+    });
   }
 
   begin() {
