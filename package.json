@@ -36,7 +36,7 @@
     "dotenv": "^8.2.0",
     "extract-zip": "^2.0.0",
     "hasbin": "^1.2.3",
-    "log4js": "^4.4.0",
+    "log4js": "^6.4.0",
     "targz": "^1.0.1",
     "wget-improved": "^3.2.0"
   },
